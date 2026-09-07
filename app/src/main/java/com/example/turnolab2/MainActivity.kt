@@ -31,7 +31,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.turnolab2.ui.theme.Purple80
+import com.example.turnolab2.ui.theme.Purple40
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.width
@@ -86,7 +86,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 .padding(bottom = 16.dp)
                 .border (
                     width = 2.dp,
-                    color = Purple80,
+                    color = Purple40,
                     shape = CircleShape,
                 )
         )
@@ -107,7 +107,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Icon (
                 imageVector = Icons.Default.Email,
                 contentDescription = "Email Icon",
-                tint = Purple80,
+                tint = Purple40,
                 modifier = Modifier.size(18.dp)
             )
             Spacer (modifier = Modifier.width(5.dp))
@@ -123,7 +123,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Icon (
                 imageVector = Icons.Default.Phone,
                 contentDescription = "Phone Icon",
-                tint = Purple80,
+                tint = Purple40,
                 modifier = Modifier.size(18.dp)
             )
             Spacer (modifier = Modifier.width(5.dp))
@@ -154,7 +154,7 @@ fun ButtonRow(name: String, modifier: Modifier = Modifier) {
         Button(
             onClick = {},
             colors = ButtonDefaults.buttonColors(
-                containerColor = Purple80,
+                containerColor = Purple40,
                 contentColor = Color.White
             )
         ) {
@@ -169,7 +169,7 @@ fun ButtonRow(name: String, modifier: Modifier = Modifier) {
                 containerColor = Color.White,
                 contentColor = Color.Black
             ),
-            border = BorderStroke(1.dp, Purple80)
+            border = BorderStroke(1.dp, Purple40)
         ) {
             Text(
                 text = "Follow",
