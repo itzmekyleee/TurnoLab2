@@ -40,7 +40,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Phone
 
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,35 +47,29 @@ class MainActivity : ComponentActivity() {
         setContent {
             TurnoLab2Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Greeting(name = "Android", modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
 
+// preview only in Android Studio, not on phone
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    TurnoLab2Theme {
-        Greeting("Android")
-    }
+    TurnoLab2Theme { Greeting("Android") }
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    // Column = vertical layout
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .padding(all = 16.dp),
-        horizontalAlignment = Alignment.
-        CenterHorizontally,
+        modifier = modifier.fillMaxSize().background(Color.White).padding(all = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    )    {
+    ) {
+        // round avatar with purple border
         Image(
             painter = painterResource(id = R.drawable.avatar),
             contentDescription = "Avatar Logo",
@@ -84,100 +77,51 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 .fillMaxWidth(fraction = 0.3f)
                 .clip(CircleShape)
                 .padding(bottom = 16.dp)
-                .border (
-                    width = 2.dp,
-                    color = Purple40,
-                    shape = CircleShape,
-                )
+                .border(width = 2.dp, color = Purple40, shape = CircleShape)
         )
-       Text(
-            "Kyle Tristan D. Turno",
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-        )
-        Text (
+
+        Text("Kyle Tristan D. Turno", fontWeight = FontWeight.Bold, color = Color.Black)
+
+        Text(
             "BSIT Student | Mobile Developer",
             color = Color.Gray,
             fontSize = 15.sp,
             modifier = Modifier.padding(bottom = 16.dp),
         )
-        Row (
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon (
-                imageVector = Icons.Default.Email,
-                contentDescription = "Email Icon",
-                tint = Purple40,
-                modifier = Modifier.size(18.dp)
-            )
-            Spacer (modifier = Modifier.width(5.dp))
-            Text (
-                "kyletristanturno2005@gmail.com",
-                color = Color.Black,
-                fontWeight = FontWeight.Bold
-            )
+
+        // Row = horizontal layout
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(imageVector = Icons.Default.Email, contentDescription = "Email Icon", tint = Purple40, modifier = Modifier.size(18.dp))
+            Spacer(modifier = Modifier.width(5.dp))
+            Text("kyletristanturno2005@gmail.com", color = Color.Black, fontWeight = FontWeight.Bold)
         }
-        Row (
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon (
-                imageVector = Icons.Default.Phone,
-                contentDescription = "Phone Icon",
-                tint = Purple40,
-                modifier = Modifier.size(18.dp)
-            )
-            Spacer (modifier = Modifier.width(5.dp))
-            Text (
-                "+63 915 6006 472",
-                color = Color.Black,
-                fontWeight = FontWeight.Bold
-            )
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(imageVector = Icons.Default.Phone, contentDescription = "Phone Icon", tint = Purple40, modifier = Modifier.size(18.dp))
+            Spacer(modifier = Modifier.width(5.dp))
+            Text("+63 915 6006 472", color = Color.Black, fontWeight = FontWeight.Bold)
         }
-        ButtonRow (
-            name = name,
-            modifier = Modifier
-        )
+
+        ButtonRow(name = name, modifier = Modifier)
     }
 }
 
 @Composable
 fun ButtonRow(name: String, modifier: Modifier = Modifier) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical
-            = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy (
-            8.dp, Alignment.CenterHorizontally
-        )
+        modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)
     ) {
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Purple40,
-                contentColor = Color.White
-            )
-        ) {
-            Text(
-                text = "Message",
-                fontWeight = FontWeight.Bold
-            )
+        Button(onClick = {}, colors = ButtonDefaults.buttonColors(containerColor = Purple40, contentColor = Color.White)) {
+            Text("Message", fontWeight = FontWeight.Bold)
         }
+
         Button(
             onClick = {},
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White,
-                contentColor = Color.Black
-            ),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
             border = BorderStroke(1.dp, Purple40)
         ) {
-            Text(
-                text = "Follow",
-                fontWeight = FontWeight.Bold
-            )
+            Text("Follow", fontWeight = FontWeight.Bold)
         }
     }
 }
-
-
-
