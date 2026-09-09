@@ -39,6 +39,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Phone
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableIntStateOf
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,7 +89,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             "BSIT Student | Mobile Developer",
             color = Color.Gray,
             fontSize = 15.sp,
-            modifier = Modifier.padding(bottom = 16.dp),
+            modifier = Modifier.padding(bottom = 16.dp)
         )
 
         // Row = horizontal layout
@@ -101,27 +104,55 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.width(5.dp))
             Text("+63 915 6006 472", color = Color.Black, fontWeight = FontWeight.Bold)
         }
-
         ButtonRow(name = name, modifier = Modifier)
+
+        // profile views count adds 1 when click
+
+        // padding in kotlin padding right = padding(end = 16.dp) | padding left = padding(start = 16.dp)
+        val profileViewsCount = remember { mutableIntStateOf(0)}
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                "Profile Views: ${profileViewsCount.intValue}",
+                modifier = Modifier.padding(end = 16.dp),
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+            Button(
+                onClick = { profileViewsCount.intValue +=1 },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Purple40, contentColor = Color.White
+                )
+            ) {
+                Text(
+                    "+1",
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
     }
 }
 
 @Composable
 fun ButtonRow(name: String, modifier: Modifier = Modifier) {
+    // remember keeps the value, mutableStateOf updates the UI
+    val isFollowing = remember { mutableStateOf(false) }
     Row(
         modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)
     ) {
-        Button(onClick = {}, colors = ButtonDefaults.buttonColors(containerColor = Purple40, contentColor = Color.White)) {
+        Button(onClick = {},
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Purple40, contentColor = Color.White
+            )) {
             Text("Message", fontWeight = FontWeight.Bold)
         }
-
         Button(
-            onClick = {},
+            onClick = { isFollowing.value = !isFollowing.value },
             colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
             border = BorderStroke(1.dp, Purple40)
         ) {
-            Text("Follow", fontWeight = FontWeight.Bold)
+            Text( if (isFollowing.value) "Following" else "Follow",
+                fontWeight = FontWeight.Bold)
         }
     }
 }
